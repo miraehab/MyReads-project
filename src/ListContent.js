@@ -3,13 +3,19 @@ import Book from './Book'
 //import * as BooksAPI from './BooksAPI'
 
 class ListContent extends Component{
-    state={
-
+   state={
+        afterChange:''
     }
 
+    afterChanging = (value)=>{
+        this.setState(()=>(
+            {afterChange: value}
+        ))
+    };
+
     render(){
-        const { query } = this.state
         const { section, book } = this.props
+
         return(
             <div className="list-books">
                 <div className="list-books-title">
@@ -27,6 +33,7 @@ class ListContent extends Component{
                                             (<li key={b.id}>
                                                 <Book
                                                 books={b}
+                                                afterChange={this.afterChanging}
                                                 />
                                             </li>)
                                             ))}
