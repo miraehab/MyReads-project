@@ -53,10 +53,11 @@ class SearchBook extends Component{
                     <ol className="books-grid">
                     {(!this.state.books.error)?
                       this.state.books.map((book)=>(
-                            <li>
+                            <li key={book.id}>
                               <Book 
                                 books={book}
                                 afterChange={this.afterChanging}
+                                source='search'
                                 shelf={this.checkAlreadyExist(book)}
                               />
                             </li>

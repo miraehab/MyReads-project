@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Book from './Book'
-//import * as BooksAPI from './BooksAPI'
 import { Link } from 'react-router-dom'
-//import SearchBook from './SearchBook'
 
 class ListContent extends Component{
    state={
@@ -37,6 +35,7 @@ class ListContent extends Component{
                                                 <Book
                                                     books={b}
                                                     afterChange={this.afterChanging}
+                                                    source='list'
                                                 />
                                             </li>)
                                             ))}

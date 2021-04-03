@@ -12,6 +12,7 @@ class Book extends Component{
     
     render(){
       const { books } = this.props
+      const shelf = (this.props.source === 'list')?this.props.books.shelf:this.props.shelf
 
         return(
             <div className="book">
@@ -20,7 +21,7 @@ class Book extends Component{
                 <div className="book-shelf-changer">
                   <SelectOptions 
                   handler={this.handler}
-                  value={(this.props.books.shelf === undefined)?this.props.shelf:this.props.books.shelf}
+                  value={shelf}
                   />
                 </div>
               </div>
