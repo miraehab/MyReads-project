@@ -16,9 +16,12 @@ class Book extends Component{
         return(
             <div className="book">
               <div className="book-top">
-                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${books.imageLinks.thumbnail})` }}></div>
+                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${(books.imageLinks !== undefined)?books.imageLinks.thumbnail:''})` }}></div>
                 <div className="book-shelf-changer">
-                  <SelectOptions handler={this.handler}/>
+                  <SelectOptions 
+                  handler={this.handler}
+                  value={(this.props.books.shelf === undefined)?this.props.shelf:this.props.books.shelf}
+                  />
                 </div>
               </div>
               <div className="book-title">{books.title}</div>

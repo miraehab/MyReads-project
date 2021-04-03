@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Book from './Book'
 //import * as BooksAPI from './BooksAPI'
+import { Link } from 'react-router-dom'
+//import SearchBook from './SearchBook'
 
 class ListContent extends Component{
    state={
@@ -13,6 +15,7 @@ class ListContent extends Component{
         ))
     };
 
+
     render(){
         const { section, book } = this.props
 
@@ -24,7 +27,7 @@ class ListContent extends Component{
                 <div className="list-books-content">
                     <div>
                         {section.map((s)=>(
-                            <div className="bookshelf">
+                            <div className="bookshelf" key={s}>
                                 <h2 className="bookshelf-title">{s}</h2>
                                 <div className="bookshelf-books">
                                     <ol className="books-grid">
@@ -32,8 +35,8 @@ class ListContent extends Component{
                                             b.shelf.trim().toLowerCase() === s.replace(/\s/g, '').toLowerCase() &&
                                             (<li key={b.id}>
                                                 <Book
-                                                books={b}
-                                                afterChange={this.afterChanging}
+                                                    books={b}
+                                                    afterChange={this.afterChanging}
                                                 />
                                             </li>)
                                             ))}
@@ -44,8 +47,11 @@ class ListContent extends Component{
                     </div>
                 </div>
                 <div className="open-search">
-                    <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+                <Link 
+                    to ='/search'
+                    className='open-search button'>Add a book</Link>
                 </div>
+                
             </div>
             
         )
